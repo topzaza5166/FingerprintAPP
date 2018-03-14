@@ -1,6 +1,7 @@
 package com.vertice.teepop.fingerprintapp
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Context
 import android.content.pm.PackageManager
 import android.hardware.fingerprint.FingerprintManager
@@ -47,6 +48,12 @@ class FingerprintHelper(val context: Context) : FingerprintManager.Authenticatio
     override fun onAuthenticationSucceeded(result: FingerprintManager.AuthenticationResult) {
         super.onAuthenticationSucceeded(result)
         Toast.makeText(context, "Authentication succeeded.", Toast.LENGTH_LONG).show()
+        val dialog = Dialog(context)
+        dialog.apply {
+            setTitle("Authentication succeeded")
+            setContentView(R.layout.lottie_animetion_layout)
+            setCancelable(true)
+        }.show()
     }
 
     override fun onAuthenticationFailed() {
